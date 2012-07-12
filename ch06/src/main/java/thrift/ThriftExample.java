@@ -26,7 +26,7 @@ public class ThriftExample {
 
   public static void main(String[] args) throws IOException {
     try {
-      TTransport transport = new TSocket("0.0.0.0", 9090, 20000);
+      TTransport transport = new TSocket("0.0.0.0", 2181, 20000);
       TProtocol protocol = new TBinaryProtocol(transport, true, true);
       Hbase.Client client = new Hbase.Client(protocol);
       transport.open();
@@ -44,14 +44,14 @@ public class ThriftExample {
 
       ArrayList<Mutation> mutations = new ArrayList<Mutation>();
       mutations.add(new Mutation(false, ByteBuffer.wrap(COLUMN),
-        ByteBuffer.wrap(VALUE)));
+        ByteBuffer.wrap(VALUE), false));
       client.mutateRow(ByteBuffer.wrap(TABLE), ByteBuffer.wrap(ROW),
-        mutations);
+        mutations, null);
 
       ArrayList<byte[]> columnNames = new ArrayList<byte[]>();
       columnNames.add(FAMILY2);
       int scannerId = client.scannerOpen(ByteBuffer.wrap(TABLE), null,
-        null);
+        null, null);
       while (client.scannerGet(scannerId) != null)
         ;
       client.scannerClose(scannerId);

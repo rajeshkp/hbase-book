@@ -21,7 +21,6 @@ public class MasterObserverExample extends BaseMasterObserver {
   public static final Log LOG = LogFactory.getLog(HRegion.class);
   // vv MasterObserverExample
 
-  @Override
   public void postCreateTable(
     ObserverContext<MasterCoprocessorEnvironment> env,
     HRegionInfo[] regions, boolean sync)

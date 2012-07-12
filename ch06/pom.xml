@@ -140,7 +140,7 @@
     <dependency>
       <groupId>org.apache.thrift</groupId>
       <artifactId>libthrift</artifactId>
-      <version>0.6.1</version>
+      <version>0.8.0</version>
       <exclusions>
         <exclusion>
           <artifactId>slf4j-api</artifactId>
@@ -149,7 +149,7 @@
         <exclusion>
           <artifactId>slf4j-log4j12</artifactId>
           <groupId>org.slf4j</groupId>
-        </exclusion>
+        </exclusion>       
         <exclusion>
           <artifactId>junit</artifactId>
           <groupId>junit</groupId>
@@ -177,10 +177,12 @@
           <artifactId>log4j</artifactId>
           <groupId>log4j</groupId>
         </exclusion>
+        <!--
         <exclusion>
           <artifactId>slf4j-api</artifactId>
           <groupId>org.slf4j</groupId>
         </exclusion>
+        -->
       </exclusions>
     </dependency>
   </dependencies>

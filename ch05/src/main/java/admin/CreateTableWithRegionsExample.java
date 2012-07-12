@@ -15,10 +15,11 @@ import java.io.IOException;
 
 public class CreateTableWithRegionsExample {
 
+  private static Configuration conf = HBaseConfiguration.create();
   // vv CreateTableWithRegionsExample
   private static void printTableRegions(String tableName) throws IOException { // co CreateTableWithRegionsExample-1-PrintTable Helper method to print the regions of a table.
     System.out.println("Printing regions of table: " + tableName);
-    HTable table = new HTable(Bytes.toBytes(tableName));
+    HTable table = new HTable(conf, Bytes.toBytes(tableName));
     Pair<byte[][], byte[][]> pair = table.getStartEndKeys(); // co CreateTableWithRegionsExample-2-GetKeys Retrieve the start and end keys from the newly created table.
     for (int n = 0; n < pair.getFirst().length; n++) {
       byte[] sk = pair.getFirst()[n];
